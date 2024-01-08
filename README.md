@@ -1,4 +1,6 @@
-# 🏗 Scaffold-ETH 2
+# 🏗 Moving Mondrian NFT project, built on Scaffold-ETH 2
+
+(This README has not been updated, however Moving Mondrian is an NFT project by David Ryan, for Optimism's "We Love The Art" competition in Jan 2024)
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
