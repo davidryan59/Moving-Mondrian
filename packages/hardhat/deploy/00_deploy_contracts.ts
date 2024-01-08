@@ -3,8 +3,8 @@ import { DeployFunction } from "hardhat-deploy/types";
 
 // TODO: check these before deploying
 const initialOwner = "0x7349d6e55cB3F737249FbAa047C16b826559B127"; // drcoder.eth
-const initialBeneficiary = "0xc5D621B4f44D987a49f45A2c5dE91B10A1f221bE"; // Use this for Goerli testing
-// const initialBeneficiary = "0xc3A2154DE8B6D4BF0b94EBf8EEfF2c313b86444b"; // Use this for Optimism deployment
+// const initialBeneficiary = "0xc5D621B4f44D987a49f45A2c5dE91B10A1f221bE"; // Use this for Goerli testing
+const initialBeneficiary = "0xc3A2154DE8B6D4BF0b94EBf8EEfF2c313b86444b"; // Use this for Optimism deployment
 
 /**
  * @param hre HardhatRuntimeEnvironment object.

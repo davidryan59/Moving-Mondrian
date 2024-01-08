@@ -28,9 +28,9 @@ const config: HardhatUserConfig = {
   },
 
   // TODO: IMPORTANT! Set the network here for deployment
-  defaultNetwork: "localhost",
+  // defaultNetwork: "localhost",
   // defaultNetwork: "goerli",
-  // defaultNetwork: "optimism",
+  defaultNetwork: "optimism",
 
   namedAccounts: {
     deployer: {

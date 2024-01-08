@@ -30,19 +30,18 @@ contract MovingMondrian is ERC721, Ownable {
 	using Strings for uint256;
 
 	// -------------------------------------
-	// CHECK all these before deploying
+	// Owner can change these settings, but this is intended only for fine-tuning straight after OP mainnet deployment.
+	// Once ownership is revoked, these settings cannot be updated again.
 
 	// Chain Config
-	string public network = "Local";
-	// string public network = "Goerli";
-	// string public network = "Optimism";
+	string public network = "Optimism";
 
 	// Mint Config
-    uint256 public mintCost = 100000 * 1000000000; // 100000 gwei, 0.00010 ETH
-	uint256 public mintLimit = 200;
-	uint256 public mintMaxBatchSize = 10;
-	uint256 public royaltyBasisPoints = 500; // 5% creator royalties
-	string public externalUrl = "https://WEB_APP_PENDING/token/";
+    uint256 public mintCost = 100000 * 1000000000; // 100000 gwei, 0.00010 ETH minting cost
+	uint256 public mintLimit = 100000;
+	uint256 public mintMaxBatchSize = 50;
+	uint256 public royaltyBasisPoints = 500; // 5% royalties - part of this goes to Protocol Guild to fund Ethereum core development
+	string public externalUrl = "https://WEB_APP_PENDING/token/"; // this will be updated after OP mainnet deployment
 
 	// -------------------------------------
 
@@ -54,9 +53,6 @@ contract MovingMondrian is ERC721, Ownable {
 	MondrianFrames mf;
 	MondrianShapes ms;
     constructor(address initialOwner, address initialBeneficiary, address mfAddress, address msAddress) ERC721("Moving Mondrian", "MONDO") Ownable() {
-		// // Royalties interface
-        // ._registerInterface(_INTERFACE_ID_ERC2981); // Gave errors...
-
 		// Data for drawing NFTs
 		mf = MondrianFrames(mfAddress);
 		ms = MondrianShapes(msAddress);
@@ -65,8 +61,11 @@ contract MovingMondrian is ERC721, Ownable {
 		_transferOwnership(initialOwner);
 		beneficiary = payable(initialBeneficiary);
 
-		// Optional initial mint, don't do this if beneficiary a Split
-		// _mintTo(initialOwner, mintMaxBatchSize);
+		// Dev gets some pre-mint, this has side benefit of making NFTs visible on OpenSea immediately
+		_mintTo(initialOwner, mintMaxBatchSize);
+		_mintTo(initialOwner, mintMaxBatchSize);
+		_mintTo(initialOwner, mintMaxBatchSize);
+		_mintTo(initialOwner, mintMaxBatchSize);
 	}
 
     /// @notice Called with the sale price to determine how much royalty
